@@ -45,7 +45,7 @@ public class Car {
 
   @Column(nullable = false)
   @GraphQLQuery(name = "isNew", description = "If a car is new")
-  private boolean isNew;
+  private Boolean isNew;
 
   @GraphQLQuery(name = "isNew", description = "Creation date")
   private LocalDate createdAt;
