@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -37,9 +38,13 @@ public class CarDTO {
   @NotNull
   private String color;
 
-  @NotNull private Integer year;
+  @NotNull
+  @Positive(groups = Integer.class)
+  private Integer year;
 
-  @NotNull private BigDecimal price;
+  @NotNull
+  @Positive(groups = BigDecimal.class)
+  private BigDecimal price;
 
   private String description;
 

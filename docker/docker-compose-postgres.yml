@@ -7,8 +7,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /var/docker/car-graphql/postgres/data:/var/lib/postgresql/data
+      - /tmp/docker/car-graphql/postgres/data:/var/lib/postgresql/data
     container_name: car-graphql-db
     environment:
-      POSTGRES_PASSWORD: Ys55Xnrs
       POSTGRES_DB: car_graphql_db
+      POSTGRES_PASSWORD: secret
