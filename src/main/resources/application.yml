@@ -1,1 +1,34 @@
+#graphql:
+#  servlet:
+#    mapping: /graphql
+#    enabled: true
+#    corsEnabled: true
 
+graphql:
+  spqr:
+    gui:
+      enabled: true
+#    graphql.spqr.relay.connection-check-relaxed=true
+
+#graphiql:
+#  mapping: /graphiql
+#  endpoint:
+#    graphql: /graphql
+#    subscriptions: /subscriptions
+#  subscriptions:
+#    timeout: 30
+#    reconnect: false
+#  static:
+#    basePath: /
+#  enabled: true
+#  pageTitle: GraphiQL
+#  cdn:
+#    enabled: false
+#    version: 0.13.0
+#  props:
+#    resources:
+#      query: query.graphql
+#      defaultQuery: defaultQuery.graphql
+#      variables: variables.graphql
+#    variables:
+#      editorTheme: "solarized light"

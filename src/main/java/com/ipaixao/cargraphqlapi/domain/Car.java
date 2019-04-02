@@ -16,19 +16,19 @@ import java.time.LocalDate;
 public class Car {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @GraphQLQuery(name = "id", description = "A car's id")
   private Long id;
 
-  @Column(nullable = false)
+  @Column(nullable = false, length = 40)
   @GraphQLQuery(name = "brand", description = "A car's brand")
   private String brand;
 
-  @Column(nullable = false)
+  @Column(nullable = false, length = 50)
   @GraphQLQuery(name = "model", description = "A car's model")
   private String model;
 
-  @Column(nullable = false)
+  @Column(nullable = false, length = 30)
   @GraphQLQuery(name = "color", description = "A car's color")
   private String color;
 
@@ -36,7 +36,7 @@ public class Car {
   @GraphQLQuery(name = "year", description = "A car's year")
   private Integer year;
 
-  @Column(nullable = false)
+  @Column(nullable = false, scale = 2)
   @GraphQLQuery(name = "price", description = "A car's price")
   private BigDecimal price;
 
@@ -47,9 +47,11 @@ public class Car {
   @GraphQLQuery(name = "isNew", description = "If a car is new")
   private Boolean isNew;
 
+  @Column(nullable = false)
   @GraphQLQuery(name = "isNew", description = "Creation date")
   private LocalDate createdAt;
 
+  @Column(nullable = false)
   @GraphQLQuery(name = "isNew", description = "Update date")
   private LocalDate updatedAt;
 }
