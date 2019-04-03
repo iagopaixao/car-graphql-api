@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class GraphQLSchemaFactory {
 
   public GraphQL createSchema(Object service) {
-    var schema =
+    final var schema =
         new GraphQLSchemaGenerator()
             .withResolverBuilders(new AnnotatedResolverBuilder())
             .withOperationsFromSingleton(service)
