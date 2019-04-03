@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  car-graphql-db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - /tmp/docker/car-graphql/postgres/data:/var/lib/postgresql/data
+    container_name: car-graphql-db
+    environment:
+      POSTGRES_DB: car_graphql_db
+      POSTGRES_PASSWORD: secret

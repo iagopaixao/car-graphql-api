@@ -1,18 +1,20 @@
 package com.ipaixao.cargraphqlapi.service.dto;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -37,9 +39,13 @@ public class CarDTO {
   @NotNull
   private String color;
 
-  @NotNull private Integer year;
+  @NotNull
+  @Positive(groups = int.class)
+  private Integer year;
 
-  @NotNull private BigDecimal price;
+  @NotNull
+  @Positive(groups = BigDecimal.class)
+  private BigDecimal price;
 
   private String description;
 
