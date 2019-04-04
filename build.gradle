@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter'
 
+    implementation 'com.graphql-java:graphiql-spring-boot-starter:5.0.2'
     implementation 'io.leangen.graphql:spqr:0.9.9'
 
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
