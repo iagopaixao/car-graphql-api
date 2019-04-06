@@ -1,7 +1,7 @@
 package com.ipaixao.cargraphqlapi.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ipaixao.cargraphqlapi.domain.CarAudit;
+import com.ipaixao.cargraphqlapi.domain.AuditLog;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,5 +44,5 @@ public class CarDTO {
 
   @NotNull private Boolean isNew;
 
-  @JsonIgnore private CarAudit carAudit;
+  @JsonIgnore private AuditLog auditLog;
 }

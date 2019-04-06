@@ -50,5 +50,5 @@ public class Car {
   @GraphQLQuery(name = "isNew", description = "If a car is new")
   private Boolean isNew;
 
-  @Embedded @Builder.Default private CarAudit carAudit = new CarAudit();
+  @Embedded @Builder.Default private AuditLog auditLog = new AuditLog();
 }

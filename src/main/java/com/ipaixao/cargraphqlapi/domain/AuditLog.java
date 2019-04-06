@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Embeddable
-public class CarAudit {
+public class AuditLog {
 
   @Column(name = "created_at", nullable = false)
   @GraphQLQuery(name = "isNew", description = "Creation date")
@@ -20,7 +20,7 @@ public class CarAudit {
   @GraphQLQuery(name = "isNew", description = "Updating date")
   private LocalDateTime updatedAt;
 
-  CarAudit() {
+  AuditLog() {
     setup();
   }
 
