@@ -1,1 +1,27 @@
+server:
+  port: 8081
 
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/car_graphql_db
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: secret
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.json
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    properties:
+      hibernate:
+        ddl-auto: validate
+        show-sql: true
+        format_sql: true
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl

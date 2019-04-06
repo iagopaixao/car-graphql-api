@@ -1,0 +1,10 @@
+{
+  "databaseChangeLog": [
+    {
+      "include": {
+        "file": "db/changelog/db.changelog.V05042019-01-initial-schema.json",
+        "relativeToChangelogFile": false
+      }
+    }
+  ]
+}

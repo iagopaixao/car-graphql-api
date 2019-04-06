@@ -1,18 +1,19 @@
 package com.ipaixao.cargraphqlapi.service;
 
 import com.ipaixao.cargraphqlapi.service.dto.CarDTO;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
 public interface CarService {
 
-  List<CarDTO> getCars();
+  List<CarDTO> getAll();
 
-  CarDTO getCarById(Long id);
+  CarDTO getById(Long id);
 
-  CarDTO saveCar(CarDTO car);
+  CarDTO save(CarDTO car);
 
-  CarDTO updateCar(CarDTO car);
+  CarDTO update(CarDTO car);
 
-  void deleteCar(Long id);
+  HttpStatus delete(Long id);
 }

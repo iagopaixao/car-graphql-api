@@ -2,21 +2,24 @@ package com.ipaixao.cargraphqlapi.domain;
 
 import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "car", schema = "public")
 public class Car {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", unique = true, nullable = false)
   @GraphQLQuery(name = "id", description = "A car's id")
   private Long id;
 
@@ -43,15 +46,9 @@ public class Car {
   @GraphQLQuery(name = "description", description = "A car's description")
   private String description;
 
-  @Column(nullable = false)
+  @Column(name = "is_new", nullable = false)
   @GraphQLQuery(name = "isNew", description = "If a car is new")
   private Boolean isNew;
 
-  @Column(nullable = false)
-  @GraphQLQuery(name = "isNew", description = "Creation date")
-  private LocalDate createdAt;
-
-  @Column(nullable = false)
-  @GraphQLQuery(name = "isNew", description = "Update date")
-  private LocalDate updatedAt;
+  @Embedded @Builder.Default private CarAudit carAudit = new CarAudit();
 }
