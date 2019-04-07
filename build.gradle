@@ -16,6 +16,7 @@ ext {
 
 group = 'com.ipaixao'
 version = '0.0.1-SNAPSHOT'
+
 sourceCompatibility = '12'
 targetCompatibility = '12'
 
@@ -28,20 +29,32 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
+    implementation('org.springframework.boot:spring-boot-starter') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+
+    implementation 'io.leangen.graphql:graphql-spqr-spring-boot-starter:0.0.4'
     implementation 'com.graphql-java:graphiql-spring-boot-starter:5.0.2'
-    implementation 'io.leangen.graphql:spqr:0.9.9'
 
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
-    implementation 'org.apache.commons:commons-collections4:4.2'
-    runtime 'com.h2database:h2:1.4.196'
+    implementation 'org.apache.commons:commons-collections4:4.3'
+    implementation 'org.postgresql:postgresql:42.2.5'
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.yaml:snakeyaml:1.24'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'org.mockito:mockito-core:2.26.0'
+    testRuntime 'com.h2database:h2:1.4.199'
 }
 
 application {

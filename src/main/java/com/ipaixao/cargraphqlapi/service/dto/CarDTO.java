@@ -1,10 +1,7 @@
 package com.ipaixao.cargraphqlapi.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ipaixao.cargraphqlapi.domain.AuditLog;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,15 +11,11 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonSerialize(using = LocalDateSerializer.class)
-@JsonDeserialize(using = LocalDateDeserializer.class)
-@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 public class CarDTO {
 
   private Long id;
@@ -51,7 +44,5 @@ public class CarDTO {
 
   @NotNull private Boolean isNew;
 
-  private LocalDate createdAt;
-
-  private LocalDate updatedAt;
+  @JsonIgnore private AuditLog auditLog;
 }
