@@ -1,7 +1,6 @@
 package com.ipaixao.cargraphqlapi.service;
 
 import com.ipaixao.cargraphqlapi.service.dto.CarDTO;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 

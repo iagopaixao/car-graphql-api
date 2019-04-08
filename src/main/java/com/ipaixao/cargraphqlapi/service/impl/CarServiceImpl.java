@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-import static com.ipaixao.cargraphqlapi.util.MessageUtils.format;
 import static org.springframework.transaction.annotation.Isolation.READ_COMMITTED;
 import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 
@@ -24,7 +23,8 @@ import static org.springframework.transaction.annotation.Propagation.REQUIRES_NE
 @Transactional(
     propagation = REQUIRES_NEW,
     isolation = READ_COMMITTED,
-    rollbackFor = {EntityNotFoundException.class, SQLException.class})
+    rollbackFor = {EntityNotFoundException.class, SQLException.class}
+)
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CarServiceImpl implements CarService {
 
@@ -65,6 +65,7 @@ public class CarServiceImpl implements CarService {
     } else {
       cars = repository.findDuplicate(car.getModel(), car.getColor(), car.getId());
     }
+
     cars.ifPresent(
       c -> {
         throw new BusinessException("msg-error.model-name-duplication", car.getColor());
