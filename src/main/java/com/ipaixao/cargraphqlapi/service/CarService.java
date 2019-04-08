@@ -15,5 +15,5 @@ public interface CarService {
 
   CarDTO update(CarDTO car);
 
-  HttpStatus delete(Long id);
+  void delete(Long id);
 }
