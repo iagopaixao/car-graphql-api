@@ -1,10 +1,10 @@
 package com.ipaixao.cargraphqlapi.exception;
 
+import static com.ipaixao.cargraphqlapi.util.MessageUtils.format;
+
 public class EntityNotFoundException extends RuntimeException {
 
-  private static final String DEFAULT_MESSAGE = "Could not find entity: %s";
-
   public EntityNotFoundException(final Class clazz) {
-    super(String.format(DEFAULT_MESSAGE, clazz.getName()));
+    super(format("msg-error.not-find-entity", clazz.getName()));
   }
 }
