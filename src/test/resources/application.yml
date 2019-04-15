@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    url: jdbc:h2:mem:car_graphql_db
+    driverClassName: org.h2.Driver
+    username: root
+    password: secret
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.json
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: h2
+    properties:
+      hibernate:
+        ddl-auto: validate
+        show-sql: true
+        format_sql: true
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        jdbc:
+          lob:
+            non_contextual_creation: true
+          temp:
+            use_jdbc_metadata_defaults: false
+
+swagger-ui:
+  api-info:
+    title: REST support for Car GraphQL API
+    description: This is the REST UI support of Car GraphQL API. here you can perform REST operations on the API.
+    license: MIT
+    basePackage: com.ipaixao.cargraphqlapi.web.rest
+    contractName: Iago Paixão
+    contractUrl: https://github.com/euiagosilva
+    contractEmail: euiagopaixao@gmail.com

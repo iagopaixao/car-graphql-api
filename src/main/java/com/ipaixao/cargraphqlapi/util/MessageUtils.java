@@ -18,7 +18,7 @@ public final class MessageUtils {
 
   private MessageUtils() {}
 
-  public static String format(final String messageKey, final Object... args) {
+  public static String getMessage(final String messageKey, final Object... args) {
     return messageSource.getMessage(messageKey, args, Locale.US);
   }
 

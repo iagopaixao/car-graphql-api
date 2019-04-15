@@ -12,18 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
+import static com.ipaixao.cargraphqlapi.enumeration.Messages.MODEL_NAME_DUPLICATION;
 import static org.springframework.transaction.annotation.Isolation.READ_COMMITTED;
 import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 
 @Service
 @Transactional(
     propagation = REQUIRES_NEW,
-    isolation = READ_COMMITTED,
-    rollbackFor = {EntityNotFoundException.class, SQLException.class}
+    isolation = READ_COMMITTED
 )
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CarServiceImpl implements CarService {
@@ -40,36 +38,33 @@ public class CarServiceImpl implements CarService {
   @Transactional(readOnly = true)
   public CarDTO getById(final Long id) {
     return mapper.toDto(
-        repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Car.class)));
+        repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Car.class))
+    );
   }
 
   public CarDTO save(final CarDTO car) {
-    validateDuplication(car);
+    repository
+        .findDuplicate(car.getModel(), car.getColor())
+        .ifPresent(
+            cars -> {
+              throw new BusinessException(MODEL_NAME_DUPLICATION, car.getColor());
+            }
+        );
     return mapper.toDto(repository.save(mapper.toEntity(car)));
   }
 
   public CarDTO update(final CarDTO car) {
-    validateDuplication(car);
+    repository
+        .findDuplicate(car.getModel(), car.getColor(), car.getId())
+        .ifPresent(
+            cars -> {
+              throw new BusinessException(MODEL_NAME_DUPLICATION, car.getColor());
+            }
+        );
     return mapper.toDto(repository.save(mapper.toEntity(car)));
   }
 
   public void delete(final Long id) {
     repository.deleteById(id);
-  }
-
-  private void validateDuplication(CarDTO car) {
-    final Optional<List<Car>> cars;
-
-    if (car.getId() == null) {
-      cars = repository.findDuplicate(car.getModel(), car.getColor());
-    } else {
-      cars = repository.findDuplicate(car.getModel(), car.getColor(), car.getId());
-    }
-
-    cars.ifPresent(
-      c -> {
-        throw new BusinessException("msg-error.model-name-duplication", car.getColor());
-      }
-    );
   }
 }

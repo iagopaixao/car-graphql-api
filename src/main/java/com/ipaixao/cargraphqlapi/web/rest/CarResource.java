@@ -1,6 +1,7 @@
 package com.ipaixao.cargraphqlapi.web.rest;
 
 import com.ipaixao.cargraphqlapi.exception.BusinessException;
+import com.ipaixao.cargraphqlapi.exception.EntityNotFoundException;
 import com.ipaixao.cargraphqlapi.service.CarService;
 import com.ipaixao.cargraphqlapi.service.dto.CarDTO;
 import io.swagger.annotations.Api;
@@ -17,6 +18,7 @@ import java.util.List;
 import static java.net.URI.create;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.ResponseEntity.*;
 
 @Api("Car Resource")
 @RestController
@@ -32,14 +34,18 @@ public class CarResource {
       produces = APPLICATION_JSON_UTF8_VALUE
   )
   @ApiOperation("Gets a car by id")
-  public ResponseEntity<CarDTO> getById(@PathVariable("id") @Valid Long id) {
-    return ResponseEntity.ok(service.getById(id));
+  public ResponseEntity getById(@PathVariable("id") @Valid Long id) {
+    try{
+      return ok(service.getById(id));
+    } catch (EntityNotFoundException e) {
+      return status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
   }
 
   @ApiOperation("Gets all cars")
   @GetMapping(produces = APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<List<CarDTO>> getAll() {
-    return ResponseEntity.ok(service.getAll());
+      return ok(service.getAll());
   }
 
   @PostMapping(consumes = APPLICATION_JSON_UTF8_VALUE, produces = APPLICATION_JSON_UTF8_VALUE)
@@ -48,7 +54,7 @@ public class CarResource {
     try{
       return ResponseEntity.created(create("/cars")).body(service.save(car));
     } catch (BusinessException e) {
-      return ResponseEntity.unprocessableEntity().body(e.getMessage());
+      return unprocessableEntity().body(e.getMessage());
     }
   }
 
@@ -56,9 +62,9 @@ public class CarResource {
   @PutMapping(consumes = APPLICATION_JSON_UTF8_VALUE, produces = APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity update(@RequestBody @Valid CarDTO car) {
     try{
-      return ResponseEntity.ok(service.update(car));
+      return ok(service.update(car));
     } catch (BusinessException e) {
-      return ResponseEntity.unprocessableEntity().body(e.getMessage());
+      return unprocessableEntity().body(e.getMessage());
     }
   }
 
