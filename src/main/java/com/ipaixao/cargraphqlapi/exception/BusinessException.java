@@ -1,10 +1,11 @@
 package com.ipaixao.cargraphqlapi.exception;
 
-import static com.ipaixao.cargraphqlapi.util.MessageUtils.format;
+import com.ipaixao.cargraphqlapi.enumeration.Messages;
+import com.ipaixao.cargraphqlapi.util.MessageUtils;
 
 public class BusinessException extends RuntimeException {
 
-  public BusinessException(final String msg, final Object... params) {
-    super(format(msg, params));
+  public BusinessException(final Messages msg, final Object... params) {
+    super(MessageUtils.getMessage(msg.getValue(), params));
   }
 }

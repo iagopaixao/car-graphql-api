@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -21,15 +22,15 @@ public class CarDTO {
   private Long id;
 
   @Size(max = 40)
-  @NotNull
+  @NotEmpty
   private String brand;
 
   @Size(max = 50)
-  @NotNull
+  @NotEmpty
   private String model;
 
   @Size(max = 30)
-  @NotNull
+  @NotEmpty
   private String color;
 
   @NotNull

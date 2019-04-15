@@ -16,15 +16,14 @@ import static org.mapstruct.ReportingPolicy.ERROR;
     unmappedSourcePolicy = ERROR,
     unmappedTargetPolicy = ERROR,
     nullValueCheckStrategy = ALWAYS,
-    nullValuePropertyMappingStrategy = IGNORE
-)
+    nullValuePropertyMappingStrategy = IGNORE)
 public interface CarMapper extends EntityMapper<CarDTO, Car> {
 
   @Override
-  @Mapping(target = "auditLog", source = "auditLog", ignore = true)
+  @Mapping(target = "auditLog", ignore = true)
   Car toEntity(CarDTO dto);
 
   @Override
-  @Mapping(target = "auditLog", source = "auditLog", ignore = true)
+  @Mapping(target = "auditLog", ignore = true)
   CarDTO toDto(Car entity);
 }
