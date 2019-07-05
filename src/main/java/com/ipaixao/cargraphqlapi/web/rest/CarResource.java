@@ -19,7 +19,13 @@ import static java.net.URI.create;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.http.ResponseEntity.*;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.OPTIONS;
 
+@CrossOrigin(
+    origins = "*",
+    methods = {GET, POST, PUT, PATCH, DELETE, OPTIONS}
+)
 @Api("Car Resource")
 @RestController
 @RequestMapping("/api/cars")

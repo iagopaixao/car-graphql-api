@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static com.ipaixao.cargraphqlapi.CarMockFactory.*;
 import static com.ipaixao.cargraphqlapi.enumeration.Messages.MODEL_NAME_DUPLICATION;
@@ -19,7 +20,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -32,7 +32,7 @@ public class CarResourceIntegrationTest {
   @Before
   public void setup() {
     this.mockMvc =
-        standaloneSetup(new CarResource(service))
+        MockMvcBuilders.standaloneSetup(new CarResource(service))
             .setMessageConverters(new MappingJackson2HttpMessageConverter(OBJECT_MAPPER))
             .build();
   }

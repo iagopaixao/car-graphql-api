@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.PostUpdate;
 import javax.persistence.PrePersist;
 import java.time.LocalDateTime;
 
@@ -22,11 +23,17 @@ public class AuditLog {
 
   AuditLog() {
     setup();
+    afterUpdate();
   }
 
   @PrePersist
   private void setup() {
     this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
+  }
+
+  @PostUpdate
+  private void afterUpdate() {
     this.updatedAt = LocalDateTime.now();
   }
 }
