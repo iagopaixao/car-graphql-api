@@ -1,6 +1,6 @@
 # Car GraphQL API
 
-> This is a simple GraphQL model API written in JAVA 11 with [Spring Boot](https://spring.io/projects/spring-boot) and [GraphQL Schema Publisher & Query Resolver - SPQR](https://github.com/leangen/graphql-spqr).
+> This is a simple GraphQL model API written in JAVA 12 with [Spring Boot](https://spring.io/projects/spring-boot) and [GraphQL Schema Publisher & Query Resolver - SPQR](https://github.com/leangen/graphql-spqr).
 
 ## Environment Provisioning
 
@@ -86,7 +86,7 @@
 
 ## REST Support
 
-It's possible perform Rest operations on API using [Swagger UI](https://swagger.io/tools/swagger-ui/). Only access: `http://localhost:8081/swagger-ui.hml`;
+It's possible perform REST operations on API using [Swagger UI](https://swagger.io/tools/swagger-ui/). Only access: `http://localhost:8081/swagger-ui.hml`;
 
 ## Meta
 
