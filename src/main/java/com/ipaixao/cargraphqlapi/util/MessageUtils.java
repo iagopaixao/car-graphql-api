@@ -10,16 +10,16 @@ import java.util.Properties;
 
 public final class MessageUtils {
 
-  private static MessageSource messageSource;
+  private static final MessageSource MESSAGE_SOURCE;
 
   static {
-    messageSource = messageSource();
+    MESSAGE_SOURCE = messageSource();
   }
 
   private MessageUtils() {}
 
   public static String getMessage(final String messageKey, final Object... args) {
-    return messageSource.getMessage(messageKey, args, Locale.US);
+    return MESSAGE_SOURCE.getMessage(messageKey, args, Locale.US);
   }
 
   private static MessageSource messageSource() {
