@@ -92,7 +92,7 @@ It's possible perform REST operations on API using [Swagger UI](https://swagger.
 
 [Iago Paixão](https://www.linkedin.com/in/iagopaixao/) – euiagopaixao@gmail.com
 
-Distribuído sob a licença [MIT](https://github.com/euiagosilva/car-graphql-api/blob/master/LICENSE).
+distributed under [MIT](https://github.com/euiagosilva/car-graphql-api/blob/master/LICENSE) license
 
 https://github.com/euiagosilva/car-graphql-api
 
