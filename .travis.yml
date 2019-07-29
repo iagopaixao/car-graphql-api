@@ -13,7 +13,7 @@ addons:
   sonarcloud:
     organization: "euiagosilva"
     token:
-      secure: "**************************"
+      secure: "e454cc8a465e35d5ade734d9b9619526f04b6c87"
 
 script:
-  - ./gradlew sonarqube \ -Dsonar.projectKey=car-graphql-api \ -Dsonar.organization=euiagosilva \ -Dsonar.host.url=https://sonarcloud.io \ -Dsonar.login=e454cc8a465e35d5ade734d9b9619526f04b6c87
+  - ./gradlew sonarqube
