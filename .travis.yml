@@ -1,13 +1,19 @@
 language: java
-# use Java 8
 jdk:
 - openjdk12
 
-# see https://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure
 sudo: false
 
-# cache the build tool's caches
 cache:
   directories:
   - $HOME/.m2
   - $HOME/.gradle
+
+addons:
+  sonarcloud:
+    organization: "euiagosilva"
+    token:
+      secure: "**************************"
+
+script:
+  - ./gradlew sonarqube
