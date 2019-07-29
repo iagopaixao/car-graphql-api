@@ -63,7 +63,7 @@ dependencies {
 
 sonarqube {
   properties {
-    sonar.projectKey "euiagosilva_car-graphql-api"
+    property "sonar.projectKey", "com.ipaixao.cargraphqlapi:car-graphql-api"
   }
 }
 
