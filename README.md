@@ -1,5 +1,7 @@
 # Car GraphQL API
 
+[![Build Status](https://travis-ci.org/euiagosilva/car-graphql-api.svg?branch=master)](https://travis-ci.org/euiagosilva/car-graphql-api)
+
 > This is a simple GraphQL model API written in JAVA 12 with [Spring Boot](https://spring.io/projects/spring-boot) and [GraphQL Schema Publisher & Query Resolver - SPQR](https://github.com/leangen/graphql-spqr).
 
 ## Environment Provisioning
